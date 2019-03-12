@@ -4,7 +4,8 @@ COPY . /src
 COPY composer-lagoon.json /app/composer.json
 COPY config /app/config
 COPY scripts /app/scripts
-RUN composer install --no-dev \
+RUN composer global remove hirak/prestissimo \
+    && composer install --no-dev \
     && mkdir -p /app/config/default
 
 FROM amazeeio/php:7.1-cli-drupal
